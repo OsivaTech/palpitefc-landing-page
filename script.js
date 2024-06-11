@@ -82,7 +82,7 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     };
 
     // Enviar a requisição POST para o endpoint especificado
-    fetch('http://dev.palpitefutebolclube.com:5113/api/waitinglist', {
+    fetch('http://148.113.183.239:5113/api/waitinglist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
