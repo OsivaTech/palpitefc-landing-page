@@ -34,7 +34,7 @@ var x = setInterval(function () {
 }, 1000);
 
 // Seleciona o campo de data de nascimento
-var dataNascimentoInput = document.getElementById("data-nascimento");
+var dataNascimentoInput = document.getElementById("birthday");
 
 // Define o formato da data para exibir quando o campo é focado
 var formatoData = "dd/mm/aaaa";
@@ -60,7 +60,46 @@ document.getElementById("show-form-btn").addEventListener("click", function () {
 
 document.getElementById("signup-form").addEventListener("submit", function (event) {
     event.preventDefault(); // Evitar o envio do formulário para atualizar a página
-    // Aqui você pode adicionar o código para lidar com o envio do formulário, como enviar os dados para o servidor ou exibir uma mensagem de confirmação.
+    
+    // Capturar os dados do formulário
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const team = document.getElementById("team").value;
+    const gender = document.getElementById("gender").value;
+    const birthday = document.getElementById("birthday").value;
+    const city = document.getElementById("city").value;
+    const state = document.getElementById("state").value;
+
+    // Criar o objeto com os dados do formulário
+    const formData = {
+        name,
+        email,
+        team,
+        gender,
+        birthday,
+        city,
+        state
+    };
+
+    // Enviar a requisição POST para o endpoint especificado
+    fetch('http://dev.palpitefutebolclube.com:5113/api/waitinglist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (response.status === 204) {
+            alert('Cadastro realizado com sucesso!');
+        } else {
+            alert('Email já cadastrado.');
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Ocorreu um erro ao realizar o cadastro.');
+    });
 });
 
 function mascara(tel) {

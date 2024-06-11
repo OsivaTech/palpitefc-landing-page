@@ -31,12 +31,12 @@
 
             <form id="signup-form" class="signup-form" style="display:none;">
                 <div class="input-group">
-                    <input type="text" id="nome" placeholder="Nome" required>
-                    <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+                    <input type="text" id="name" placeholder="Nome" required>
+                    <input type="text" id="team" placeholder="Time" required>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="data-nascimento" placeholder="Data de nascimento" required>
-                    <select id="sexo">
+                    <input type="date" id="birthday" placeholder="Data de nascimento" required>
+                    <select id="gender" required>
                         <option value="" disabled selected>Sexo</option>
                         <option value="M">Masculino</option>
                         <option value="F">Feminino</option>
@@ -44,13 +44,13 @@
                     </select>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="telefone" placeholder="Telefone" maxlength="15" oninput="mascara(this)">
-                    <input type="email" id="email" placeholder="E-mail">
+                    <input type="email" id="email" placeholder="E-mail" required>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="cidade" placeholder="Cidade">
-                    <select id="estado" required>
+                    <input type="text" id="city" placeholder="Cidade">
+                    <select id="state" required>
                         <option value="" disabled selected>Estado</option>
+                        <!-- Lista de estados brasileiros -->
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
