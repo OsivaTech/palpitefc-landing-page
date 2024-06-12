@@ -7,6 +7,7 @@
     <title>Palpite Futebol Clube</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="flip-clock/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -16,26 +17,18 @@
                 <img src="images/logo_topo.webp" alt="Palpite Futebol Clube" class="logo">
                 <p class="slogan">Seu palpite é gol de placa</p>
             </div>
-            <!-- <div id="countdown">
-                <div><span id="days"></span><small>dias</small></div>
-                <div><span id="hours"></span><small>horas</small></div>
-                <div><span id="minutes"></span><small>minutos</small></div>
-                <div><span id="seconds"></span><small>segundos</small></div>
-            </div> -->
-
             <div id="flip-clock" class="flip-clock"></div>
             <div class="subtitle-box">
                 <p class="subtitle">Um site para palpitar e concorrer a prêmios!</p>
                 <button id="show-form-btn" class="signup-button">Cadastre-se</button>
             </div>
-
             <form id="signup-form" class="signup-form" style="display:none;">
                 <div class="input-group">
-                    <input type="text" id="name" placeholder="Nome" required>
-                    <input type="text" id="team" placeholder="Time" required>
+                    <input type="text" id="name" placeholder="Nome" maxlength="100" required>
+                    <input type="text" id="team" placeholder="Time" maxlength="100" required>
                 </div>
                 <div class="input-group">
-                    <input type="date" id="birthday" placeholder="Data de nascimento" required>
+                    <input type="date" id="birthday" placeholder="Data de nascimento" maxlength="8" required>
                     <select id="gender" required>
                         <option value="" disabled selected>Sexo</option>
                         <option value="M">Masculino</option>
@@ -44,10 +37,10 @@
                     </select>
                 </div>
                 <div class="input-group">
-                    <input type="email" id="email" placeholder="E-mail" required>
+                    <input type="email" id="email" placeholder="E-mail" maxlength="100" required>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="city" placeholder="Cidade">
+                    <input type="text" id="city" placeholder="Cidade" maxlength="100" required>
                     <select id="state" required>
                         <option value="" disabled selected>Estado</option>
                         <!-- Lista de estados brasileiros -->

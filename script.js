@@ -1,38 +1,3 @@
-// Defina a data de lançamento
-var launchDate = new Date("July 3, 2024 14:00:00").getTime();
-
-// Atualize a contagem regressiva a cada 1 segundo
-var x = setInterval(function () {
-    // Obtenha a data e hora atual
-    var now = new Date().getTime();
-
-    // Encontre a diferença entre agora e a data de lançamento
-    var distance = launchDate - now;
-
-    // Cálculos de tempo para dias, horas, minutos e segundos
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Função para formatar números com dois dígitos
-    function formatNumber(num) {
-        return num < 10 ? "0" + num : num;
-    }
-
-    // Exibir o resultado nos elementos com id correspondente
-    document.getElementById("days").innerHTML = formatNumber(days);
-    document.getElementById("hours").innerHTML = formatNumber(hours);
-    document.getElementById("minutes").innerHTML = formatNumber(minutes);
-    document.getElementById("seconds").innerHTML = formatNumber(seconds);
-
-    // Se a contagem regressiva terminar, escreva algum texto
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "Já está no ar!";
-    }
-}, 1000);
-
 // Seleciona o campo de data de nascimento
 var dataNascimentoInput = document.getElementById("birthday");
 
@@ -82,7 +47,7 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     };
 
     // Enviar a requisição POST para o endpoint especificado
-    fetch('http://148.113.183.239:5113/api/waitinglist', {
+    fetch('https://palpitefutebolclube.com:5114/api/waitinglist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -91,9 +56,9 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     })
     .then(response => {
         if (response.status === 204) {
-            alert('Cadastro realizado com sucesso!');
+            alert('Obrigado por se cadastrar na lista de espera do PalpiteFutebolClube. Nós avisaremos quando o site estiver no ar!');
         } else {
-            alert('Email já cadastrado.');
+            alert('Esse e-mail já está cadastrado.');
         }
     })
     .catch((error) => {
