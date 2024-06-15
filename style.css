@@ -25,24 +25,23 @@ body {
 
 .container {
     text-align: center;
-    padding: 0 1vw 0 1vw;
-}
+    padding: 0 2vw 0 2vw;
 
-.title-box{
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
 }
 
 .logo {
-    max-width: 80%;
+    max-width: 95%;
     height: auto;
 }
 
-.slogan {
+.welcome {
+    font-size: 1.2em;
     margin: 0;
-}
-
-.subtitle-box {
-    margin-bottom: 20px;
 }
 
 .subtitle {
@@ -50,39 +49,9 @@ body {
     font-size: 1.2em;
 }
 
-#countdown {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-#countdown div {
-    color: #ffffff;
-    font-size: 1.5em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#countdown span {
-    font-size: 2.75em;
-    margin: 0;
-}
-
-#countdown small {
-    font-size: 0.55em;
-    color: #cccccc;
-}
-
-#show-form-btn{
-    margin-top: 1em;
-}
-
 .signup-form {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 .signup-form input[type="text"],
@@ -137,7 +106,7 @@ body {
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 8vw;
 }
 
 .social-icons img {

@@ -1,7 +1,6 @@
 .flip-clock {
   text-align: center;
   perspective: 400px;
-  margin: 20px auto;
 }
 
 .flip-clock *,
@@ -16,7 +15,7 @@
 }
 
 .flip-clock__slot {
-  font-size: 2vw;
+  font-size: 3vw;
   color: #cccccc;
 }
 
@@ -24,7 +23,7 @@
   display: block;
   position: relative;
   padding-bottom: 0.72em;
-  font-size: 6vw;
+  font-size: 9vw;
   line-height: 0.95;
 }
 

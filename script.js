@@ -21,6 +21,7 @@ dataNascimentoInput.addEventListener("blur", function () {
 document.getElementById("show-form-btn").addEventListener("click", function () {
     document.getElementById("signup-form").style.display = "block";
     document.getElementById("show-form-btn").style.display = "none";
+    document.getElementById("show-form-btn-box").style.display = "none";
 });
 
 document.getElementById("signup-form").addEventListener("submit", function (event) {
@@ -56,7 +57,7 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     })
     .then(response => {
         if (response.status === 204) {
-            alert('Obrigado por se cadastrar na lista de espera do PalpiteFutebolClube. Nós avisaremos quando o site estiver no ar!');
+            alert('Obrigado por se cadastrar na lista de espera do Palpite Futebol Clube. Nós avisaremos quando o site estiver no ar!');
         } else {
             alert('Esse e-mail já está cadastrado.');
         }

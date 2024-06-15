@@ -2,6 +2,15 @@
 <html lang="pt-BR">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RRVNM0EWEG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RRVNM0EWEG');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palpite Futebol Clube</title>
@@ -15,12 +24,15 @@
         <div class="container">
             <div class="title-box">
                 <img src="images/logo_topo.webp" alt="Palpite Futebol Clube" class="logo">
-                <p class="slogan">Seu palpite é gol de placa</p>
+                <p class="welcome">Bem-vindo ao Palpite Futebol Clube!</p>
             </div>
             <div id="flip-clock" class="flip-clock"></div>
             <div class="subtitle-box">
-                <p class="subtitle">Um site para palpitar e concorrer a prêmios!</p>
-                <button id="show-form-btn" class="signup-button">Cadastre-se</button>
+                <p class="subtitle">Cada palpite certo conta! Acumule pontos a cada acerto e suba no ranking dos
+                    melhores palpiteiros.</p>
+            </div>
+            <div class="show-form-btn-box">
+                <button id="show-form-btn" class="signup-button">Entrar na lista de espera</button>
             </div>
             <form id="signup-form" class="signup-form" style="display:none;">
                 <div class="input-group">
@@ -79,10 +91,7 @@
                 <a href="https://www.instagram.com/palpitefutebolclube" target="_blank">
                     <img src="images/instagram_icon.png" alt="Instagram">
                 </a>
-                <a href="https://www.facebook.com/palpitefutebolclube" target="_blank">
-                    <img src="images/facebook_icon.png" alt="Facebook">
-                </a>
-                <a href="https://twitter.com/palpitefutebolclube" target="_blank">
+                <a href="https://x.com/palpitefutclube" target="_blank">
                     <img src="images/twitter_icon.png" alt="Twitter">
                 </a>
             </div>
