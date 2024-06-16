@@ -57,7 +57,7 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     })
     .then(response => {
         if (response.status === 204) {
-            alert('Obrigado por se cadastrar na lista de espera do Palpite Futebol Clube. Nós avisaremos quando o site estiver no ar!');
+            window.location.href = 'success/index.html';
         } else {
             alert('Esse e-mail já está cadastrado.');
         }
