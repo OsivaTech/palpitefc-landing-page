@@ -49,23 +49,35 @@ document.getElementById("signup-form").addEventListener("submit", function (even
 
     // Enviar a requisição POST para o endpoint especificado
     fetch('https://palpitefutebolclube.com:5114/api/waitinglist', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => {
-        if (response.status === 204) {
-            window.location.href = 'success/index.html';
-        } else {
-            alert('Esse e-mail já está cadastrado.');
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('Ocorreu um erro ao realizar o cadastro.');
-    });
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+})
+.then(response => {
+    if (response.status === 204) {
+        // Chama o webhook depois de redirecionar
+        fetch('https://api.pushcut.io/8i-jJ922TBAyxfkvaf4k8/notifications/NotificationPalpite', {
+            method: 'GET'
+        }).then(wbResponse => {
+            if (!wbResponse.ok) {
+                console.error('Erro ao chamar o webhook:', wbResponse.statusText);
+            }else{
+                console.log("deu bom carai")
+            }
+        }).catch(wbError => {
+            console.error('Erro ao chamar o webhook:', wbError);
+        });
+        window.location.href = 'success/index.html';
+    } else {
+        alert('Esse e-mail já está cadastrado.');
+    }
+})
+.catch((error) => {
+    console.error('Error:', error);
+    alert('Ocorreu um erro ao realizar o cadastro.');
+});
 });
 
 function mascara(tel) {
