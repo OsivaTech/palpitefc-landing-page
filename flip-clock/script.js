@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    var deadline = new Date("July 6, 2024 14:00:00");
+    var deadline = new Date("July 20, 2024 12:00:00");
     var c = new Clock(deadline, function () { window.location.href = "https://www.palpitefutebolclube.com";  });
 
     // Exibe o relógio flip no elemento com o id 'flip-clock'
