@@ -18,6 +18,22 @@ dataNascimentoInput.addEventListener("blur", function () {
     dataNascimentoInput.setAttribute("placeholder", "Data de Nascimento");
 });
 
+dataNascimentoInput.addEventListener("change", function () {
+    dataNascimentoInput.setCustomValidity("");
+});
+
+// Função para validar a idade
+function isValidBirthday(birthday) {
+    var birthDate = new Date(birthday);
+    var today = new Date();
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var monthDifference = today.getMonth() - birthDate.getMonth();
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age >= 1;
+}
+
 document.getElementById("show-form-btn").addEventListener("click", function () {
     document.getElementById("signup-form").style.display = "block";
     document.getElementById("show-form-btn").style.display = "none";
@@ -26,7 +42,7 @@ document.getElementById("show-form-btn").addEventListener("click", function () {
 
 document.getElementById("signup-form").addEventListener("submit", function (event) {
     event.preventDefault(); // Evitar o envio do formulário para atualizar a página
-    
+
     // Capturar os dados do formulário
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -35,6 +51,13 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     const birthday = document.getElementById("birthday").value;
     const city = document.getElementById("city").value;
     const state = document.getElementById("state").value;
+
+    // Validar a idade
+    if (!isValidBirthday(birthday)) {
+        dataNascimentoInput.setCustomValidity("Coloque sua data de nascimento.");
+        dataNascimentoInput.reportValidity();
+        return;
+    }
 
     // Criar o objeto com os dados do formulário
     const formData = {
@@ -49,35 +72,35 @@ document.getElementById("signup-form").addEventListener("submit", function (even
 
     // Enviar a requisição POST para o endpoint especificado
     fetch('https://palpitefutebolclube.com:5114/api/waitinglist', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(formData)
-})
-.then(response => {
-    if (response.status === 204) {
-        // Chama o webhook depois de redirecionar
-        fetch('https://api.pushcut.io/8i-jJ922TBAyxfkvaf4k8/notifications/NotificationPalpite', {
-            method: 'GET'
-        }).then(wbResponse => {
-            if (!wbResponse.ok) {
-                console.error('Erro ao chamar o webhook:', wbResponse.statusText);
-            }else{
-                console.log("deu bom carai")
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+        .then(response => {
+            if (response.status === 204) {
+                // Chama o webhook depois de redirecionar
+                fetch('https://api.pushcut.io/8i-jJ922TBAyxfkvaf4k8/notifications/NotificationPalpite', {
+                    method: 'GET'
+                }).then(wbResponse => {
+                    if (!wbResponse.ok) {
+                        console.error('Erro ao chamar o webhook:', wbResponse.statusText);
+                    } else {
+                        console.log("Webhook chamado com sucesso");
+                    }
+                }).catch(wbError => {
+                    console.error('Erro ao chamar o webhook:', wbError);
+                });
+                window.location.href = 'success/index.html';
+            } else {
+                alert('Esse e-mail já está cadastrado.');
             }
-        }).catch(wbError => {
-            console.error('Erro ao chamar o webhook:', wbError);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Ocorreu um erro ao realizar o cadastro.');
         });
-        window.location.href = 'success/index.html';
-    } else {
-        alert('Esse e-mail já está cadastrado.');
-    }
-})
-.catch((error) => {
-    console.error('Error:', error);
-    alert('Ocorreu um erro ao realizar o cadastro.');
-});
 });
 
 function mascara(tel) {
