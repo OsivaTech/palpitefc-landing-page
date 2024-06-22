@@ -1,39 +1,3 @@
-// Seleciona o campo de data de nascimento
-var dataNascimentoInput = document.getElementById("birthday");
-
-// Define o formato da data para exibir quando o campo é focado
-var formatoData = "dd/mm/aaaa";
-
-// Adiciona um ouvinte de evento para o evento de foco
-dataNascimentoInput.addEventListener("focus", function () {
-    // Quando o campo é focado, altera o placeholder para exibir o formato da data
-    dataNascimentoInput.setAttribute("type", "date");
-    dataNascimentoInput.setAttribute("placeholder", formatoData);
-});
-
-// Adiciona um ouvinte de evento para o evento de desfoco
-dataNascimentoInput.addEventListener("blur", function () {
-    // Quando o campo perde o foco, restaura o placeholder original
-    dataNascimentoInput.setAttribute("type", "text");
-    dataNascimentoInput.setAttribute("placeholder", "Data de Nascimento");
-});
-
-dataNascimentoInput.addEventListener("change", function () {
-    dataNascimentoInput.setCustomValidity("");
-});
-
-// Função para validar a idade
-function isValidBirthday(birthday) {
-    var birthDate = new Date(birthday);
-    var today = new Date();
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var monthDifference = today.getMonth() - birthDate.getMonth();
-    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age >= 1;
-}
-
 document.getElementById("show-form-btn").addEventListener("click", function () {
     document.getElementById("signup-form").style.display = "block";
     document.getElementById("show-form-btn").style.display = "none";
@@ -48,16 +12,9 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     const email = document.getElementById("email").value;
     const team = document.getElementById("team").value;
     const gender = document.getElementById("gender").value;
-    const birthday = document.getElementById("birthday").value;
+    const age = document.getElementById("age").value;
     const city = document.getElementById("city").value;
     const state = document.getElementById("state").value;
-
-    // Validar a idade
-    if (!isValidBirthday(birthday)) {
-        dataNascimentoInput.setCustomValidity("Coloque sua data de nascimento.");
-        dataNascimentoInput.reportValidity();
-        return;
-    }
 
     // Criar o objeto com os dados do formulário
     const formData = {
@@ -65,7 +22,7 @@ document.getElementById("signup-form").addEventListener("submit", function (even
         email,
         team,
         gender,
-        birthday,
+        age,
         city,
         state
     };
@@ -109,3 +66,11 @@ function mascara(tel) {
         .replace(/^(\d{2})(\d)/g, "($1) $2") // Coloca parênteses em volta dos dois primeiros dígitos
         .replace(/(\d)(\d{4})$/, "$1-$2"); // Coloca hífen entre o quarto e o quinto dígitos
 }
+
+document.getElementById("age").addEventListener("input", function (event) {
+    if (event.target.validity.rangeUnderflow) {
+        event.target.setCustomValidity('Você precisa ter 18 anos ou mais.');
+    } else {
+        event.target.setCustomValidity('');
+    }
+});
