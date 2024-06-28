@@ -51,17 +51,12 @@
             <div class="subtitle-box">
                 <p class="subtitle">Aposte sem gastar e ganhe prêmios!🎁💰
                     <br>
-                    <br>
                     Junte-se à nossa comunidade e mostre quem é o verdadeiro craque!
-                    <br>
-                    Faça seu pré-cadastro 👇
                 </p>
             </div>
-            <!-- <div class="show-form-btn-box">
-                <button id="show-form-btn" class="signup-button">Entrar na lista de espera</button>
-            </div> -->
             <form id="signup-form" class="signup-form" style="display:block;">
-                <div class="input-group">
+                <p class="subtitle">Faça seu pré-cadastro 👇<br><br></p>
+                    <div class="input-group">
                     <input type="text" id="name" placeholder="Nome" maxlength="100" required>
                     <input type="text" id="team" placeholder="Time" maxlength="100" required>
                 </div>
@@ -76,6 +71,8 @@
                 </div>
                 <div class="input-group">
                     <input type="email" id="email" placeholder="E-mail" maxlength="100" required>
+                    <input type="text" id="phone" placeholder="Telefone" inputmode="numeric" oninput="formatPhoneNumber(this)"
+                        maxlength="15" required>
                 </div>
                 <div class="input-group">
                     <input type="text" id="city" placeholder="Cidade" maxlength="100" required>

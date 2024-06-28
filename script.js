@@ -1,9 +1,3 @@
-// document.getElementById("show-form-btn").addEventListener("click", function () {
-//     document.getElementById("signup-form").style.display = "block";
-//     document.getElementById("show-form-btn").style.display = "none";
-//     document.getElementById("show-form-btn-box").style.display = "none";
-// });
-
 document.getElementById("signup-form").addEventListener("submit", function (event) {
     event.preventDefault(); // Evitar o envio do formulário para atualizar a página
 
@@ -15,6 +9,7 @@ document.getElementById("signup-form").addEventListener("submit", function (even
     const age = document.getElementById("age").value;
     const city = document.getElementById("city").value;
     const state = document.getElementById("state").value;
+    const phoneNumber = cleanPhoneNumber(document.getElementById("phone").value);
 
     // Criar o objeto com os dados do formulário
     const formData = {
@@ -24,7 +19,8 @@ document.getElementById("signup-form").addEventListener("submit", function (even
         gender,
         age,
         city,
-        state
+        state,
+        phoneNumber
     };
 
     // Enviar a requisição POST para o endpoint especificado
@@ -74,3 +70,27 @@ document.getElementById("age").addEventListener("input", function (event) {
         event.target.setCustomValidity('');
     }
 });
+
+function formatPhoneNumber(input) {
+    // Remove all non-digit characters from the input
+    const cleanedNumber = input.value.replace(/\D/g, '');
+
+    // Check if the cleaned number has the expected length
+    if (cleanedNumber.length !== 11) {
+        console.error('Invalid phone number length. Expected 11 digits.');
+        return; // Do nothing if invalid
+    }
+
+    // Extract the area code and the remaining digits
+    const areaCode = cleanedNumber.slice(0, 2);
+    const firstPart = cleanedNumber.slice(2, 7);
+    const secondPart = cleanedNumber.slice(7);
+
+    // Format the phone number
+    const formattedNumber = `(${areaCode}) ${firstPart}-${secondPart}`;
+    input.value = formattedNumber;
+}
+
+function cleanPhoneNumber(phoneNumber) {
+    return phoneNumber.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+}
