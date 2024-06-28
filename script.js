@@ -1,8 +1,8 @@
-document.getElementById("show-form-btn").addEventListener("click", function () {
-    document.getElementById("signup-form").style.display = "block";
-    document.getElementById("show-form-btn").style.display = "none";
-    document.getElementById("show-form-btn-box").style.display = "none";
-});
+// document.getElementById("show-form-btn").addEventListener("click", function () {
+//     document.getElementById("signup-form").style.display = "block";
+//     document.getElementById("show-form-btn").style.display = "none";
+//     document.getElementById("show-form-btn-box").style.display = "none";
+// });
 
 document.getElementById("signup-form").addEventListener("submit", function (event) {
     event.preventDefault(); // Evitar o envio do formulário para atualizar a página
